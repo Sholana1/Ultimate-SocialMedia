@@ -15,7 +15,8 @@ const ProtectedLayout = () => {
   }
   return (
     <Stack>
-        <Stack.Screen name="(tab)" options={{headerShown: false}}/>
+        <Stack.Screen name="(tab)" options={{headerShown: false}}/>\
+        <Stack.Screen name="new" options={{title: "", animation: "slide_from_bottom"}}/>
     </Stack>
   );
 };

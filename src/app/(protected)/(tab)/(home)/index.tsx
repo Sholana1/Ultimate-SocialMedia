@@ -1,19 +1,25 @@
 import FeedPostItem from "@/components/FeedPostItem";
 import dummyPost from "@/dummyPosts";
-import { useAuth } from "@/providers/AuthProvider";
+import { AntDesign } from "@expo/vector-icons";
 import { Link } from "expo-router";
-import { Button, FlatList } from "react-native";
+import { FlatList, Pressable } from "react-native";
 
-
-export default function App() {
-  const {signOut} = useAuth()
+export default function FeedScreen() {
   return (
-    <FlatList
-      data={dummyPost}
-      renderItem={({ item }) => <Link href={`/post/${item.id}`}>
-         <FeedPostItem post={item} />
-      </Link>}
-      ListFooterComponent={() => <Button onPress={signOut} title="Sign out"/>}
-    />
+    <>
+      <FlatList
+        data={dummyPost}
+        renderItem={({ item }) => (
+          <Link href={`/post/${item.id}`}>
+            <FeedPostItem post={item} />
+          </Link>
+        )}
+      />
+      <Link href="/new" asChild>
+        <Pressable className="absolute right-5 bottom-5 bg-[#007AFF] rounded-full w-[60px] h-[60px] items-center justify-center shadow-lg">
+          <AntDesign name="plus" size={24} color="white" />
+        </Pressable>
+      </Link>
+    </>
   );
 }
